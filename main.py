@@ -82,9 +82,9 @@ class SimpleNN(nn.Module):
         # Activation function
         self.relu = nn.ReLU()
         # Second fully connected layer (output layer)
-        self.fc2 = nn.Linear(hidden_size, output_size)
-        # self.relu2 = nn.Sigmoid()
-        # self.fc3 = nn.Linear(hidden_size, output_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.relu2 = nn.Sigmoid()
+        self.fc3 = nn.Linear(hidden_size, output_size)
         # then a sigmoid layer
         self.sigmoid = nn.Sigmoid()
 
@@ -96,8 +96,8 @@ class SimpleNN(nn.Module):
         x = self.relu(x)
         # Pass through the fc2 layer
         x = self.fc2(x)
-        # x = self.relu2(x)
-        # x = self.fc3(x)
+        x = self.relu2(x)
+        x = self.fc3(x)
         # sigmoid
         x = self.sigmoid(x)	
         return x

@@ -179,3 +179,101 @@
 2026-07-15 22:40:29 - INFO - Test Loss: 0.0933
 2026-07-15 22:40:29 - INFO - Test Accuracy: 95.22%
 2026-07-15 22:40:29 - INFO - Successfully appended execution results to results.csv
+2026-07-16 08:11:26 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=10, bias=True)
+  (relu2): Sigmoid()
+  (fc3): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-16 08:11:44 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=18, bias=True)
+  (relu2): Sigmoid()
+  (fc3): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-16 08:13:08 - INFO - Epoch 1 finished. Avg Loss: 0.2211
+2026-07-16 08:14:37 - INFO - Epoch 2 finished. Avg Loss: 0.1073
+2026-07-16 08:16:06 - INFO - Epoch 3 finished. Avg Loss: 0.0938
+2026-07-16 08:17:37 - INFO - Epoch 4 finished. Avg Loss: 0.0871
+2026-07-16 08:19:06 - INFO - Epoch 5 finished. Avg Loss: 0.0811
+2026-07-16 08:20:34 - INFO - Epoch 6 finished. Avg Loss: 0.0792
+2026-07-16 08:22:02 - INFO - Epoch 7 finished. Avg Loss: 0.0764
+2026-07-16 08:23:31 - INFO - Epoch 8 finished. Avg Loss: 0.0749
+2026-07-16 08:24:59 - INFO - Epoch 9 finished. Avg Loss: 0.0742
+2026-07-16 08:24:59 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:26:28 - INFO - Epoch 10 finished. Avg Loss: 0.0714
+2026-07-16 08:27:58 - INFO - Epoch 11 finished. Avg Loss: 0.0705
+2026-07-16 08:27:58 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:29:27 - INFO - Epoch 12 finished. Avg Loss: 0.0700
+2026-07-16 08:30:56 - INFO - Epoch 13 finished. Avg Loss: 0.0676
+2026-07-16 08:32:25 - INFO - Epoch 14 finished. Avg Loss: 0.0679
+2026-07-16 08:32:25 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:33:55 - INFO - Epoch 15 finished. Avg Loss: 0.0665
+2026-07-16 08:35:24 - INFO - Epoch 16 finished. Avg Loss: 0.0655
+2026-07-16 08:36:54 - INFO - Epoch 17 finished. Avg Loss: 0.0649
+2026-07-16 08:36:54 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:38:23 - INFO - Epoch 18 finished. Avg Loss: 0.0655
+2026-07-16 08:38:23 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 08:39:53 - INFO - Epoch 19 finished. Avg Loss: 0.0639
+2026-07-16 08:41:22 - INFO - Epoch 20 finished. Avg Loss: 0.0630
+2026-07-16 08:41:22 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:42:52 - INFO - Epoch 21 finished. Avg Loss: 0.0623
+2026-07-16 08:44:22 - INFO - Epoch 22 finished. Avg Loss: 0.0614
+2026-07-16 08:44:22 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:45:52 - INFO - Epoch 23 finished. Avg Loss: 0.0621
+2026-07-16 08:45:52 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 08:47:22 - INFO - Epoch 24 finished. Avg Loss: 0.0614
+2026-07-16 08:47:22 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 08:48:52 - INFO - Epoch 25 finished. Avg Loss: 0.0604
+2026-07-16 08:50:22 - INFO - Epoch 26 finished. Avg Loss: 0.0614
+2026-07-16 08:50:22 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:51:53 - INFO - Epoch 27 finished. Avg Loss: 0.0596
+2026-07-16 08:51:53 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 08:53:23 - INFO - Epoch 28 finished. Avg Loss: 0.0596
+2026-07-16 08:53:23 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 08:54:53 - INFO - Epoch 29 finished. Avg Loss: 0.0590
+2026-07-16 08:56:23 - INFO - Epoch 30 finished. Avg Loss: 0.0590
+2026-07-16 08:56:23 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 08:57:53 - INFO - Epoch 31 finished. Avg Loss: 0.0582
+2026-07-16 08:57:53 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 08:59:23 - INFO - Epoch 32 finished. Avg Loss: 0.0581
+2026-07-16 08:59:23 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 09:00:53 - INFO - Epoch 33 finished. Avg Loss: 0.0575
+2026-07-16 09:02:22 - INFO - Epoch 34 finished. Avg Loss: 0.0577
+2026-07-16 09:02:22 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 09:03:53 - INFO - Epoch 35 finished. Avg Loss: 0.0575
+2026-07-16 09:03:53 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 09:05:23 - INFO - Epoch 36 finished. Avg Loss: 0.0577
+2026-07-16 09:05:23 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 09:06:53 - INFO - Epoch 37 finished. Avg Loss: 0.0578
+2026-07-16 09:06:53 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-16 09:08:23 - INFO - Epoch 38 finished. Avg Loss: 0.0558
+2026-07-16 09:09:58 - INFO - Epoch 39 finished. Avg Loss: 0.0571
+2026-07-16 09:09:58 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 09:11:27 - INFO - Epoch 40 finished. Avg Loss: 0.0570
+2026-07-16 09:11:27 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 09:12:57 - INFO - Epoch 41 finished. Avg Loss: 0.0559
+2026-07-16 09:12:57 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 09:14:27 - INFO - Epoch 42 finished. Avg Loss: 0.0556
+2026-07-16 09:14:27 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-16 09:15:57 - INFO - Epoch 43 finished. Avg Loss: 0.0540
+2026-07-16 09:17:26 - INFO - Epoch 44 finished. Avg Loss: 0.0544
+2026-07-16 09:17:26 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-16 09:18:56 - INFO - Epoch 45 finished. Avg Loss: 0.0551
+2026-07-16 09:18:56 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-16 09:20:25 - INFO - Epoch 46 finished. Avg Loss: 0.0554
+2026-07-16 09:20:25 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-16 09:21:55 - INFO - Epoch 47 finished. Avg Loss: 0.0552
+2026-07-16 09:21:55 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-16 09:23:25 - INFO - Epoch 48 finished. Avg Loss: 0.0548
+2026-07-16 09:23:25 - INFO - --> Loss plateaued. Patience: 5/5
+2026-07-16 09:23:25 - INFO - Stopping early at epoch 48! Loss hasn't improved in 5 epochs.
+2026-07-16 09:23:28 - INFO - Test Loss: 0.0752
+2026-07-16 09:23:28 - INFO - Test Accuracy: 95.49%
+2026-07-16 09:23:28 - INFO - Successfully appended execution results to results.csv
