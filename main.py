@@ -103,7 +103,7 @@ class SimpleNN(nn.Module):
         return x
 
 
-model = SimpleNN(input_size=28*28, hidden_size=8, output_size=10)
+model = SimpleNN(input_size=28*28, hidden_size=18, output_size=10)
 
 model_loaded = False
 if USE_LATEST_MODEL:
@@ -123,7 +123,7 @@ logging.info(f"Network Architecture:\n {model}")
 criterion = nn.MSELoss(reduction='sum')
 
 start_epoch = 0
-optimizer = optim.Adam(model.parameters(), lr=0.1)
+optimizer = optim.Adam(model.parameters(), lr=0.001) # aha! this was too high.. but I thought loss will be swingy... I guess gradients are swingy, loss stayed high.
 
 if USE_LATEST_MODEL and saved_models:
     checkpoint = torch.load(latest_model_file)
