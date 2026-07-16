@@ -1,3 +1,4 @@
+import csv
 import os
 import glob
 import torch
@@ -9,6 +10,19 @@ from datetime import datetime
 import torch.optim as optim
 
 import argparse
+
+import logging
+
+# Configure the logger to save to a local file
+logging.basicConfig(
+    filename='app.log',          # The name of your local log file
+    filemode='a',                # 'a' appends data; 'w' overwrites the file each run
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S',
+    level=logging.INFO           # Minimum severity level to capture
+)
+
+
 
 # =====================================================================
 # COMMAND-LINE INTERFACE CONFIGURATION
@@ -68,7 +82,9 @@ class SimpleNN(nn.Module):
         # Activation function
         self.relu = nn.ReLU()
         # Second fully connected layer (output layer)
-        self.fc2 = nn.Linear(hidden_size, output_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.relu2 = nn.Sigmoid()
+        self.fc3 = nn.Linear(hidden_size, output_size)
         # then a sigmoid layer
         self.sigmoid = nn.Sigmoid()
 
@@ -80,12 +96,14 @@ class SimpleNN(nn.Module):
         x = self.relu(x)
         # Pass through the fc2 layer
         x = self.fc2(x)
+        x = self.relu2(x)
+        x = self.fc3(x)
         # sigmoid
         x = self.sigmoid(x)	
         return x
 
 
-model = SimpleNN(input_size=28*28, hidden_size=8, output_size=10)
+model = SimpleNN(input_size=28*28, hidden_size=18, output_size=10)
 
 model_loaded = False
 if USE_LATEST_MODEL:
@@ -94,13 +112,13 @@ if USE_LATEST_MODEL:
     if saved_models:
         # Sort files by modification time to grab the absolute latest one
         latest_model_file = max(saved_models, key=os.path.getmtime)
-        print(f"--> Found existing models. Loading weights from: {latest_model_file}")
+        logging.info(f"--> Found existing models. Loading weights from: {latest_model_file}")
         model.load_state_dict(torch.load(latest_model_file))
         model_loaded = True
     else:
-        print("--> USE_LATEST_MODEL is True, but no 'model_*.pth' files were found. Starting from scratch.")
+        logging.info("--> USE_LATEST_MODEL is True, but no 'model_*.pth' files were found. Starting from scratch.")
 
-print("Network Architecture:\n", model)
+logging.info(f"Network Architecture:\n {model}")
 
 criterion = nn.MSELoss(reduction='sum')
 
@@ -124,7 +142,7 @@ if TRAIN_MODEL or not model_loaded:
             optimizer.step()
             running_loss += loss.item()
             
-        print(f"Epoch {epoch+1} finished. Avg Loss: {running_loss/len(train_loader):.4f}")
+        logging.info(f"Epoch {epoch+1} finished. Avg Loss: {running_loss/len(train_loader):.4f}")
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"model_{timestamp}.pth"
     # Save the state dict
@@ -152,5 +170,29 @@ with torch.no_grad():
 average_test_loss = total_loss / total_samples
 test_accuracy = correct_predictions / total_samples
 
-print(f"Test Loss: {average_test_loss:.4f}")
-print(f"Test Accuracy: {test_accuracy * 100:.2f}%")
+logging.info(f"Test Loss: {average_test_loss:.4f}")
+logging.info(f"Test Accuracy: {test_accuracy * 100:.2f}%")
+
+# Prepare the data row
+timestamp_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+csv_file = 'results.csv'
+file_exists = os.path.isfile(csv_file)
+
+# Append the metrics to the CSV file
+with open(csv_file, mode='a', newline='') as f:
+    writer = csv.writer(f)
+    
+    # Write the header line only if the file is being newly created
+    if not file_exists:
+        writer.writerow(['Timestamp', 'Model File', 'Avg Train Loss', 'Test Loss', 'Test Accuracy (%)'])
+        
+    # Append the results row
+    writer.writerow([
+        timestamp_str,
+        filename if (TRAIN_MODEL or not model_loaded) else latest_model_file,
+        f"{running_loss/len(train_loader):.4f}" if (TRAIN_MODEL or not model_loaded) else "N/A",
+        f"{average_test_loss:.4f}",
+        f"{test_accuracy * 100:.2f}%"
+    ])
+
+logging.info(f"Successfully appended execution results to {csv_file}")
