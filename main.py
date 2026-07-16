@@ -122,11 +122,26 @@ logging.info(f"Network Architecture:\n {model}")
 
 criterion = nn.MSELoss(reduction='sum')
 
+start_epoch = 0
+optimizer = optim.Adam(model.parameters(), lr=0.1)
+
+if USE_LATEST_MODEL and saved_models:
+    checkpoint = torch.load(latest_model_file)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+    start_epoch = checkpoint['epoch'] + 1
+    logging.info(f"--> Resuming training from epoch {start_epoch}")
+
 if TRAIN_MODEL or not model_loaded:
     model.train()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-    for epoch in range(10): # Loop over the entire dataset 3 times
+    # Early stopping parameters (vibecoded... because this is not ML)
+    patience = 5            # Number of epochs to wait without improvement
+    min_delta = 0.001       # Minimum change to qualify as an improvement
+    best_loss = float('inf')
+    patience_counter = 0
+
+    for epoch in range(1000): # Loop over the entire dataset 3 times
         running_loss = 0.0
         for images, labels in train_loader:
             # Flatten images from (batch_size, 1, 28, 28) to (batch_size, 784)
@@ -141,13 +156,40 @@ if TRAIN_MODEL or not model_loaded:
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
-            
         logging.info(f"Epoch {epoch+1} finished. Avg Loss: {running_loss/len(train_loader):.4f}")
+        
+        # Calculate average loss for the epoch
+        avg_loss = running_loss / len(train_loader)
+        logging.info(f"Epoch {epoch+1} finished. Avg Loss: {avg_loss:.4f}")
+
+        # --- EARLY STOPPING LOGIC ---
+        # Check if the loss improved by at least min_delta
+        if avg_loss < (best_loss - min_delta):
+            best_loss = avg_loss
+            patience_counter = 0  # Reset patience because we improved
+            
+            # Optional but recommended: Save the best model weights here
+            # torch.save(model.state_dict(), "best_model.pth")
+        else:
+            patience_counter += 1
+            logging.info(f"--> Loss plateaued. Patience: {patience_counter}/{patience}")
+            
+        # If we run out of patience, exit the training loop
+        if patience_counter >= patience:
+            logging.info(f"Stopping early at epoch {epoch+1}! Loss hasn't improved in {patience} epochs.")
+            break # This exits the 'for epoch in range(1000)' loop
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"model_{timestamp}.pth"
     # Save the state dict
-    torch.save(model.state_dict(), filename)
-
+    # Instead of just saving model.state_dict()
+    checkpoint = {
+        'epoch': epoch,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'loss': running_loss
+    }
+    torch.save(checkpoint, filename)
 
 model.eval()  # Disables dropout and batch normalization updates
 total_loss = 0.0
