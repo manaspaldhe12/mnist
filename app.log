@@ -1,0 +1,65 @@
+2026-07-15 16:57:50 - INFO - Epoch 1 finished. Avg Loss: 0.2098
+2026-07-15 16:59:25 - INFO - Epoch 2 finished. Avg Loss: 0.1158
+2026-07-15 17:01:00 - INFO - Epoch 3 finished. Avg Loss: 0.1001
+2026-07-15 17:02:39 - INFO - Epoch 4 finished. Avg Loss: 0.0930
+2026-07-15 17:04:16 - INFO - Epoch 5 finished. Avg Loss: 0.0887
+2026-07-15 17:05:51 - INFO - Epoch 6 finished. Avg Loss: 0.0849
+2026-07-15 17:07:27 - INFO - Epoch 7 finished. Avg Loss: 0.0810
+2026-07-15 17:09:03 - INFO - Epoch 8 finished. Avg Loss: 0.0799
+2026-07-15 17:10:38 - INFO - Epoch 9 finished. Avg Loss: 0.0764
+2026-07-15 17:12:12 - INFO - Epoch 10 finished. Avg Loss: 0.0753
+2026-07-15 17:12:16 - INFO - Test Loss: 0.0939
+2026-07-15 17:12:16 - INFO - Test Accuracy: 94.27%
+2026-07-15 17:12:16 - INFO - Successfully appended execution results to results.csv
+2026-07-15 17:13:41 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=18, bias=True)
+  (relu2): Sigmoid()
+  (fc3): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-15 17:15:27 - INFO - Epoch 1 finished. Avg Loss: 0.2008
+2026-07-15 17:17:50 - INFO - Epoch 2 finished. Avg Loss: 0.1112
+2026-07-15 17:19:57 - INFO - Epoch 3 finished. Avg Loss: 0.0986
+2026-07-15 17:21:55 - INFO - Epoch 4 finished. Avg Loss: 0.0924
+2026-07-15 17:23:58 - INFO - Epoch 5 finished. Avg Loss: 0.0876
+2026-07-15 17:26:05 - INFO - Epoch 6 finished. Avg Loss: 0.0855
+2026-07-15 17:28:04 - INFO - Epoch 7 finished. Avg Loss: 0.0833
+2026-07-15 17:29:56 - INFO - Epoch 8 finished. Avg Loss: 0.0802
+2026-07-15 17:31:47 - INFO - Epoch 9 finished. Avg Loss: 0.0792
+2026-07-15 17:33:42 - INFO - Epoch 10 finished. Avg Loss: 0.0770
+2026-07-15 17:33:47 - INFO - Test Loss: 0.0904
+2026-07-15 17:33:47 - INFO - Test Accuracy: 94.48%
+2026-07-15 17:33:47 - INFO - Successfully appended execution results to results.csv
+2026-07-15 17:51:30 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=18, bias=True)
+  (relu2): Sigmoid()
+  (fc3): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-15 17:53:20 - INFO - Epoch 1 finished. Avg Loss: 1.7746
+2026-07-15 17:53:20 - INFO - Epoch 1 finished. Avg Loss: 1.7746
+2026-07-15 17:55:14 - INFO - Epoch 2 finished. Avg Loss: 1.8027
+2026-07-15 17:55:14 - INFO - Epoch 2 finished. Avg Loss: 1.8027
+2026-07-15 17:55:14 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-15 17:57:06 - INFO - Epoch 3 finished. Avg Loss: 1.8027
+2026-07-15 17:57:06 - INFO - Epoch 3 finished. Avg Loss: 1.8027
+2026-07-15 17:57:06 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-15 17:58:59 - INFO - Epoch 4 finished. Avg Loss: 1.8027
+2026-07-15 17:58:59 - INFO - Epoch 4 finished. Avg Loss: 1.8027
+2026-07-15 17:58:59 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-15 18:00:44 - INFO - Epoch 5 finished. Avg Loss: 1.8027
+2026-07-15 18:00:44 - INFO - Epoch 5 finished. Avg Loss: 1.8027
+2026-07-15 18:00:44 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-15 18:02:25 - INFO - Epoch 6 finished. Avg Loss: 1.8027
+2026-07-15 18:02:25 - INFO - Epoch 6 finished. Avg Loss: 1.8027
+2026-07-15 18:02:25 - INFO - --> Loss plateaued. Patience: 5/5
+2026-07-15 18:02:25 - INFO - Stopping early at epoch 6! Loss hasn't improved in 5 epochs.
+2026-07-15 18:02:28 - INFO - Test Loss: 1.8084
+2026-07-15 18:02:28 - INFO - Test Accuracy: 9.58%
+2026-07-15 18:02:28 - INFO - Successfully appended execution results to results.csv

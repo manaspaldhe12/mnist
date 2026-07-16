@@ -83,8 +83,8 @@ class SimpleNN(nn.Module):
         self.relu = nn.ReLU()
         # Second fully connected layer (output layer)
         self.fc2 = nn.Linear(hidden_size, hidden_size)
-        self.relu2 = nn.Sigmoid()
-        self.fc3 = nn.Linear(hidden_size, output_size)
+        # self.relu2 = nn.Sigmoid()
+        # self.fc3 = nn.Linear(hidden_size, output_size)
         # then a sigmoid layer
         self.sigmoid = nn.Sigmoid()
 
@@ -96,8 +96,8 @@ class SimpleNN(nn.Module):
         x = self.relu(x)
         # Pass through the fc2 layer
         x = self.fc2(x)
-        x = self.relu2(x)
-        x = self.fc3(x)
+        # x = self.relu2(x)
+        # x = self.fc3(x)
         # sigmoid
         x = self.sigmoid(x)	
         return x
@@ -156,8 +156,6 @@ if TRAIN_MODEL or not model_loaded:
             loss.backward()
             optimizer.step()
             running_loss += loss.item()
-        logging.info(f"Epoch {epoch+1} finished. Avg Loss: {running_loss/len(train_loader):.4f}")
-        
         # Calculate average loss for the epoch
         avg_loss = running_loss / len(train_loader)
         logging.info(f"Epoch {epoch+1} finished. Avg Loss: {avg_loss:.4f}")
