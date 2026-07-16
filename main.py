@@ -82,7 +82,7 @@ class SimpleNN(nn.Module):
         # Activation function
         self.relu = nn.ReLU()
         # Second fully connected layer (output layer)
-        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, output_size)
         # self.relu2 = nn.Sigmoid()
         # self.fc3 = nn.Linear(hidden_size, output_size)
         # then a sigmoid layer
@@ -103,7 +103,7 @@ class SimpleNN(nn.Module):
         return x
 
 
-model = SimpleNN(input_size=28*28, hidden_size=18, output_size=10)
+model = SimpleNN(input_size=28*28, hidden_size=8, output_size=10)
 
 model_loaded = False
 if USE_LATEST_MODEL:

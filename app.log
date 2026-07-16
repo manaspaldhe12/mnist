@@ -63,3 +63,24 @@
 2026-07-15 18:02:28 - INFO - Test Loss: 1.8084
 2026-07-15 18:02:28 - INFO - Test Accuracy: 9.58%
 2026-07-15 18:02:28 - INFO - Successfully appended execution results to results.csv
+2026-07-15 21:24:32 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=18, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-15 21:25:08 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-15 21:26:49 - INFO - Epoch 1 finished. Avg Loss: 1.6797
+2026-07-15 21:28:37 - INFO - Epoch 2 finished. Avg Loss: 2.5770
+2026-07-15 21:28:37 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-15 21:30:27 - INFO - Epoch 3 finished. Avg Loss: 2.5770
+2026-07-15 21:30:27 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-15 21:32:11 - INFO - Epoch 4 finished. Avg Loss: 2.5770
+2026-07-15 21:32:11 - INFO - --> Loss plateaued. Patience: 3/5
