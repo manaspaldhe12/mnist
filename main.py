@@ -74,38 +74,34 @@ train_loader = DataLoader(dataset=train_dataset, batch_size=1, shuffle=True)
 test_loader = DataLoader(dataset=test_dataset, batch_size=1, shuffle=True)
 
 # Define the network architecture
-class SimpleNN(nn.Module):
-    def __init__(self, output_size):
-        super(SimpleNN, self).__init__()
-        # Input: (batch_size, 1, 28, 28) -> Output: (batch_size, 16, 28, 28)
-        self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3, stride=1, padding=1)
-        self.relu1 = nn.ReLU()
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
- 
-        self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1)
-        self.relu2 = nn.ReLU()
-        self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.fc = nn.Linear(32 * 7 * 7, output_size)
-
-        self.sigmoid = nn.Sigmoid()
-
-        
-
+class Flatten(nn.Module):
     def forward(self, x):
-        x = self.conv1(x)
-        x = self.relu1(x)
-        x = self.pool(x)
-        x = self.conv2(x)
-        x = self.relu2(x)
-        x = self.pool2(x)
-        # Flatten spatial dimensions to 2D for the linear layer
-        x = x.view(x.size(0), -1) 
-        x = self.sigmoid(self.fc(x))
-        return x
+        return x.view(x.size(0), -1)
 
+model = nn.Sequential(
+    nn.Conv2d(in_channels=1, out_channels=8, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(8),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Dropout2d(p=0.15),
 
+    nn.Conv2d(in_channels=8, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(16),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Dropout2d(p=0.15),
 
-model = SimpleNN(output_size=10)
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Dropout2d(p=0.15),
+    
+    Flatten(),
+    nn.Linear(32 * 3 * 3, 10),
+    nn.Sigmoid()
+)
+
 model_loaded = False
 if USE_LATEST_MODEL:
     # Look for any files matching the pattern
@@ -130,7 +126,7 @@ if USE_LATEST_MODEL and saved_models:
     checkpoint = torch.load(latest_model_file)
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-    start_epoch = checkpoint['epoch'] + 1
+    start_epoch = checkpoint['epoch']
     logging.info(f"--> Resuming training from epoch {start_epoch}")
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
