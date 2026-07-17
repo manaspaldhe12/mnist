@@ -10,7 +10,7 @@ from datetime import datetime
 import torch.optim as optim
 
 import argparse
-
+from torch.utils.tensorboard import SummaryWriter
 import logging
 
 # Configure the logger to save to a local file
@@ -132,8 +132,9 @@ if USE_LATEST_MODEL and saved_models:
     start_epoch = checkpoint['epoch'] + 1
     logging.info(f"--> Resuming training from epoch {start_epoch}")
 
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+writer = SummaryWriter(f'runs/{timestamp}')
 if TRAIN_MODEL or not model_loaded:
-    model.train()
 
     # Early stopping parameters (vibecoded... because this is not ML)
     patience = 5            # Number of epochs to wait without improvement
@@ -143,6 +144,7 @@ if TRAIN_MODEL or not model_loaded:
 
     for epoch in range(1000): # Loop over the entire dataset 3 times
         running_loss = 0.0
+        model.train()
         for images, labels in train_loader:
             # Flatten images from (batch_size, 1, 28, 28) to (batch_size, 784)
             # default is not a vector, so I was having issues.
@@ -159,6 +161,34 @@ if TRAIN_MODEL or not model_loaded:
         # Calculate average loss for the epoch
         avg_loss = running_loss / len(train_loader)
         logging.info(f"Epoch {epoch+1} finished. Avg Loss: {avg_loss:.4f}")
+        writer.add_scalar('Loss/Train', avg_loss, epoch)
+
+        model.eval()  # Disables dropout and batch normalization updates
+        total_loss = 0.0
+        correct_predictions = 0
+        total_samples = 0
+        with torch.no_grad():
+            for images, labels in test_loader:
+                images = images.reshape(-1, 28*28)
+                images = images.float() 
+                outputs = model(images)
+                one_hot_labels = nn.functional.one_hot(labels, num_classes=10).float()
+                loss = criterion(outputs, one_hot_labels)
+                total_loss += loss.item()
+                # Calculate accuracy (assuming a classification task)
+                _, predicted = torch.max(outputs, 1)
+                correct_predictions += (predicted == labels).sum().item()
+                total_samples += labels.size(0)
+
+
+        average_test_loss = total_loss / total_samples
+        test_accuracy = correct_predictions / total_samples
+
+        logging.info(f"Test Loss: {average_test_loss:.4f}")
+        logging.info(f"Test Accuracy: {test_accuracy * 100:.2f}%")
+
+        writer.add_scalar('Loss/Validation', average_test_loss, epoch)
+        writer.add_scalar('Accuracy/Validation', test_accuracy, epoch)
 
         # --- EARLY STOPPING LOGIC ---
         # Check if the loss improved by at least min_delta
@@ -177,7 +207,6 @@ if TRAIN_MODEL or not model_loaded:
             logging.info(f"Stopping early at epoch {epoch+1}! Loss hasn't improved in {patience} epochs.")
             break # This exits the 'for epoch in range(1000)' loop
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     filename = f"model_{timestamp}.pth"
     # Save the state dict
     # Instead of just saving model.state_dict()
@@ -189,29 +218,7 @@ if TRAIN_MODEL or not model_loaded:
     }
     torch.save(checkpoint, filename)
 
-model.eval()  # Disables dropout and batch normalization updates
-total_loss = 0.0
-correct_predictions = 0
-total_samples = 0
-with torch.no_grad():
-    for images, labels in test_loader:
-        images = images.reshape(-1, 28*28)
-        images = images.float() 
-        outputs = model(images)
-        one_hot_labels = nn.functional.one_hot(labels, num_classes=10).float()
-        loss = criterion(outputs, one_hot_labels)
-        total_loss += loss.item()
-        # Calculate accuracy (assuming a classification task)
-        _, predicted = torch.max(outputs, 1)
-        correct_predictions += (predicted == labels).sum().item()
-        total_samples += labels.size(0)
 
-
-average_test_loss = total_loss / total_samples
-test_accuracy = correct_predictions / total_samples
-
-logging.info(f"Test Loss: {average_test_loss:.4f}")
-logging.info(f"Test Accuracy: {test_accuracy * 100:.2f}%")
 
 # Prepare the data row
 timestamp_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
