@@ -410,3 +410,133 @@
 2026-07-16 22:39:31 - INFO - --> Loss plateaued. Patience: 5/5
 2026-07-16 22:39:31 - INFO - Stopping early at epoch 35! Loss hasn't improved in 5 epochs.
 2026-07-16 22:39:31 - INFO - Successfully appended execution results to results.csv
+2026-07-17 10:05:40 - INFO - Network Architecture:
+ SimpleNN(
+  (fc1): Linear(in_features=784, out_features=18, bias=True)
+  (relu): ReLU()
+  (fc2): Linear(in_features=18, out_features=18, bias=True)
+  (relu2): Sigmoid()
+  (fc3): Linear(in_features=18, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+)
+2026-07-17 10:07:33 - INFO - Epoch 1 finished. Avg Loss: 0.2083
+2026-07-17 10:07:38 - INFO - Test Loss: 0.1079
+2026-07-17 10:07:38 - INFO - Test Accuracy: 93.44%
+2026-07-17 10:09:56 - INFO - Epoch 2 finished. Avg Loss: 0.1065
+2026-07-17 10:10:00 - INFO - Test Loss: 0.0970
+2026-07-17 10:10:00 - INFO - Test Accuracy: 94.11%
+2026-07-17 10:12:06 - INFO - Epoch 3 finished. Avg Loss: 0.0936
+2026-07-17 10:12:11 - INFO - Test Loss: 0.0825
+2026-07-17 10:12:11 - INFO - Test Accuracy: 95.04%
+2026-07-17 10:14:11 - INFO - Epoch 4 finished. Avg Loss: 0.0870
+2026-07-17 10:14:15 - INFO - Test Loss: 0.0850
+2026-07-17 10:14:15 - INFO - Test Accuracy: 94.93%
+2026-07-17 10:16:17 - INFO - Epoch 5 finished. Avg Loss: 0.0813
+2026-07-17 10:16:21 - INFO - Test Loss: 0.0779
+2026-07-17 10:16:21 - INFO - Test Accuracy: 95.30%
+2026-07-17 10:18:23 - INFO - Epoch 6 finished. Avg Loss: 0.0775
+2026-07-17 10:18:27 - INFO - Test Loss: 0.0852
+2026-07-17 10:18:27 - INFO - Test Accuracy: 94.96%
+2026-07-17 10:20:17 - INFO - Epoch 7 finished. Avg Loss: 0.0748
+2026-07-17 10:20:21 - INFO - Test Loss: 0.0795
+2026-07-17 10:20:21 - INFO - Test Accuracy: 95.14%
+2026-07-17 10:21:57 - INFO - Epoch 8 finished. Avg Loss: 0.0723
+2026-07-17 10:22:01 - INFO - Test Loss: 0.0821
+2026-07-17 10:22:01 - INFO - Test Accuracy: 95.10%
+2026-07-17 10:23:38 - INFO - Epoch 9 finished. Avg Loss: 0.0721
+2026-07-17 10:23:42 - INFO - Test Loss: 0.0775
+2026-07-17 10:23:42 - INFO - Test Accuracy: 95.31%
+2026-07-17 10:23:42 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:25:19 - INFO - Epoch 10 finished. Avg Loss: 0.0702
+2026-07-17 10:25:23 - INFO - Test Loss: 0.0748
+2026-07-17 10:25:23 - INFO - Test Accuracy: 95.48%
+2026-07-17 10:26:56 - INFO - Epoch 11 finished. Avg Loss: 0.0675
+2026-07-17 10:27:00 - INFO - Test Loss: 0.0761
+2026-07-17 10:27:00 - INFO - Test Accuracy: 95.57%
+2026-07-17 10:28:35 - INFO - Epoch 12 finished. Avg Loss: 0.0661
+2026-07-17 10:28:39 - INFO - Test Loss: 0.0765
+2026-07-17 10:28:39 - INFO - Test Accuracy: 95.35%
+2026-07-17 10:30:16 - INFO - Epoch 13 finished. Avg Loss: 0.0665
+2026-07-17 10:30:20 - INFO - Test Loss: 0.0743
+2026-07-17 10:30:20 - INFO - Test Accuracy: 95.69%
+2026-07-17 10:30:20 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:31:54 - INFO - Epoch 14 finished. Avg Loss: 0.0647
+2026-07-17 10:31:58 - INFO - Test Loss: 0.0780
+2026-07-17 10:31:58 - INFO - Test Accuracy: 95.43%
+2026-07-17 10:33:33 - INFO - Epoch 15 finished. Avg Loss: 0.0644
+2026-07-17 10:33:36 - INFO - Test Loss: 0.0784
+2026-07-17 10:33:36 - INFO - Test Accuracy: 95.28%
+2026-07-17 10:33:36 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:35:09 - INFO - Epoch 16 finished. Avg Loss: 0.0625
+2026-07-17 10:35:13 - INFO - Test Loss: 0.0774
+2026-07-17 10:35:13 - INFO - Test Accuracy: 95.35%
+2026-07-17 10:36:47 - INFO - Epoch 17 finished. Avg Loss: 0.0622
+2026-07-17 10:36:51 - INFO - Test Loss: 0.0810
+2026-07-17 10:36:51 - INFO - Test Accuracy: 95.23%
+2026-07-17 10:36:51 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:38:25 - INFO - Epoch 18 finished. Avg Loss: 0.0622
+2026-07-17 10:38:29 - INFO - Test Loss: 0.0799
+2026-07-17 10:38:29 - INFO - Test Accuracy: 95.31%
+2026-07-17 10:38:29 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-17 10:40:03 - INFO - Epoch 19 finished. Avg Loss: 0.0616
+2026-07-17 10:40:07 - INFO - Test Loss: 0.0725
+2026-07-17 10:40:07 - INFO - Test Accuracy: 95.72%
+2026-07-17 10:40:07 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-17 10:41:57 - INFO - Epoch 20 finished. Avg Loss: 0.0612
+2026-07-17 10:42:01 - INFO - Test Loss: 0.0827
+2026-07-17 10:42:01 - INFO - Test Accuracy: 94.96%
+2026-07-17 10:44:11 - INFO - Epoch 21 finished. Avg Loss: 0.0617
+2026-07-17 10:44:15 - INFO - Test Loss: 0.0790
+2026-07-17 10:44:15 - INFO - Test Accuracy: 95.33%
+2026-07-17 10:44:15 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:46:22 - INFO - Epoch 22 finished. Avg Loss: 0.0607
+2026-07-17 10:46:27 - INFO - Test Loss: 0.0804
+2026-07-17 10:46:27 - INFO - Test Accuracy: 95.23%
+2026-07-17 10:46:27 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-17 10:48:19 - INFO - Epoch 23 finished. Avg Loss: 0.0596
+2026-07-17 10:48:23 - INFO - Test Loss: 0.0769
+2026-07-17 10:48:23 - INFO - Test Accuracy: 95.48%
+2026-07-17 10:50:07 - INFO - Epoch 24 finished. Avg Loss: 0.0583
+2026-07-17 10:50:10 - INFO - Test Loss: 0.0778
+2026-07-17 10:50:10 - INFO - Test Accuracy: 95.44%
+2026-07-17 10:51:53 - INFO - Epoch 25 finished. Avg Loss: 0.0590
+2026-07-17 10:51:57 - INFO - Test Loss: 0.0816
+2026-07-17 10:51:57 - INFO - Test Accuracy: 95.18%
+2026-07-17 10:51:57 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 10:53:36 - INFO - Epoch 26 finished. Avg Loss: 0.0591
+2026-07-17 10:53:39 - INFO - Test Loss: 0.0725
+2026-07-17 10:53:39 - INFO - Test Accuracy: 95.70%
+2026-07-17 10:53:39 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-17 10:55:14 - INFO - Epoch 27 finished. Avg Loss: 0.0584
+2026-07-17 10:55:18 - INFO - Test Loss: 0.0761
+2026-07-17 10:55:18 - INFO - Test Accuracy: 95.53%
+2026-07-17 10:55:18 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-17 10:56:54 - INFO - Epoch 28 finished. Avg Loss: 0.0575
+2026-07-17 10:56:58 - INFO - Test Loss: 0.0828
+2026-07-17 10:56:58 - INFO - Test Accuracy: 95.17%
+2026-07-17 10:56:58 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-17 10:58:33 - INFO - Epoch 29 finished. Avg Loss: 0.0563
+2026-07-17 10:58:37 - INFO - Test Loss: 0.0743
+2026-07-17 10:58:37 - INFO - Test Accuracy: 95.66%
+2026-07-17 11:00:18 - INFO - Epoch 30 finished. Avg Loss: 0.0567
+2026-07-17 11:00:22 - INFO - Test Loss: 0.0782
+2026-07-17 11:00:22 - INFO - Test Accuracy: 95.27%
+2026-07-17 11:00:22 - INFO - --> Loss plateaued. Patience: 1/5
+2026-07-17 11:01:56 - INFO - Epoch 31 finished. Avg Loss: 0.0569
+2026-07-17 11:02:00 - INFO - Test Loss: 0.0755
+2026-07-17 11:02:00 - INFO - Test Accuracy: 95.50%
+2026-07-17 11:02:00 - INFO - --> Loss plateaued. Patience: 2/5
+2026-07-17 11:03:36 - INFO - Epoch 32 finished. Avg Loss: 0.0566
+2026-07-17 11:03:40 - INFO - Test Loss: 0.0736
+2026-07-17 11:03:40 - INFO - Test Accuracy: 95.62%
+2026-07-17 11:03:40 - INFO - --> Loss plateaued. Patience: 3/5
+2026-07-17 11:05:16 - INFO - Epoch 33 finished. Avg Loss: 0.0567
+2026-07-17 11:05:19 - INFO - Test Loss: 0.0748
+2026-07-17 11:05:19 - INFO - Test Accuracy: 95.66%
+2026-07-17 11:05:19 - INFO - --> Loss plateaued. Patience: 4/5
+2026-07-17 11:06:57 - INFO - Epoch 34 finished. Avg Loss: 0.0563
+2026-07-17 11:07:01 - INFO - Test Loss: 0.0831
+2026-07-17 11:07:01 - INFO - Test Accuracy: 95.06%
+2026-07-17 11:07:01 - INFO - --> Loss plateaued. Patience: 5/5
+2026-07-17 11:07:01 - INFO - Stopping early at epoch 34! Loss hasn't improved in 5 epochs.
+2026-07-17 11:07:01 - INFO - Successfully appended execution results to results.csv
