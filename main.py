@@ -26,9 +26,9 @@ class Config:
     epochs: int = 1000
     patience: int = 5              # Early stopping patience
     min_delta: float = 0.001       # Early stopping minimum improvement
-    log_file: str = './kaggle/working/app.log'
-    csv_file: str = './kaggle/working/results.csv'
-    data_dir: str = './data'
+    log_file: str = '/kaggle/working/app.log'
+    csv_file: str = '/kaggle/working/results.csv'
+    data_dir: str = '/kaggle/working/data'
     device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # =====================================================================
@@ -252,7 +252,7 @@ def main():
                 break
                 
         # Save the newly trained model
-        final_filename = f"./kaggle/working/model_{timestamp}.pth"
+        final_filename = f"/kaggle/working/model_{timestamp}.pth"
         checkpoint = {
             'epoch': final_epoch,
             'model_state_dict': model.state_dict(),
